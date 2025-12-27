@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전국자동차시세평가 - 내 차 가치 확인</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #1a2b4e;
+            --secondary-gold: #c5a47e;
+            --text-dark: #333;
+            --bg-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Suit', sans-serif;
+            /* Fallback if not available */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+        }
+
+        .btn-consult {
+            background-color: var(--primary-navy);
+            color: white;
+            border-radius: 0;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .btn-consult:hover {
+            background-color: #121e36;
+            color: white;
+        }
+
+        /* Hero */
+        .hero-section {
+            background: linear-gradient(135deg, #0f1c35 0%, #1a2b4e 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(26, 43, 78, 0.8), rgba(0, 0, 0, 0.6));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            letter-spacing: -1px;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-family: 'Suit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 50px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Experts */
+        .expert-card {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .expert-img {
+            height: 250px;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        /* Carousel Case Studies (A4 Ratio) */
+        .case-studies-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .carousel-item {
+            padding: 20px;
+        }
+
+        .a4-container {
+            width: 300px;
+            height: 424px;
+            /* 1:1.414 ratio roughly */
+            background: white;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            position: relative;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .report-header {
+            border-bottom: 2px solid var(--primary-navy);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .report-title {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .report-badge {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #c00;
+            border-radius: 50%;
+            color: #c00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transform: rotate(-15deg);
+            position: absolute;
+            bottom: 50px;
+            right: 40px;
+            opacity: 0.8;
+            border-style: double;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            background-color: var(--bg-light);
+            padding: 80px 0;
+        }
+
+        .form-control {
+            border-radius: 0;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-navy);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 0;
+        }
+
+        .btn-submit:hover {
+            background-color: #121e36;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                height: 30px !important;
+            }
+
+            .navbar-brand span {
+                font-size: 0.9rem !important;
+            }
+
+            .navbar-brand.me-3 {
+                margin-right: 0.5rem !important;
+            }
+
+            .navbar-brand {
+                font-size: 1rem !important;
+            }
+
+            .hero-section {
+                padding: 80px 0;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+            }
+
+            .hero-title {
+                font-size: 2rem !important;
+                /* Reduced from 3.5rem */
+                margin-bottom: 20px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+                margin-bottom: 30px;
+                padding: 0 10px;
+            }
+
+            .btn-lg {
+                width: 100%;
+                font-size: 1rem;
+            }
+
+            /* Navbar adjustments */
+            .navbar .container>div.d-flex {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar .container>div.d-flex>div[style*="height: 30px"] {
+                display: none;
+                /* Hide separator on mobile */
+            }
+
+            .navbar-brand {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Suit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    {% if success %}
+    <script>
+        alert('상담 신청이 접수되었습니다. 담당자가 곧 연락드리겠습니다.');
+        window.location.href = "{% url 'index' %}";
+    </script>
+    {% endif %}
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand d-flex align-items-center me-3" href="#">
+                    <img src="{% static 'landing/images/logo_full.png' %}" alt="전국자동차시세평가" height="50">
+                </a>
+                <div style="height: 30px; width: 1px; background-color: #ddd; margin-right: 15px;"></div>
+                <a class="navbar-brand d-flex align-items-center" href="http://www.kvcc.co.kr" target="_blank">
+                    <img src="{% static 'landing/images/kvcc_logo.jpg' %}" alt="KVCC Logo" height="40" class="me-2">
+                    <span style="font-size: 1.1rem; color: #555;">한국자동차보상센터</span>
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-consult" href="#contact">무료 상담 신청하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1 class="hero-title" style="word-break: keep-all;">
+                보상을 넘어 <span style="color: var(--secondary-gold);">가치의 증명</span>으로.<br>
+                한국자동차보상센터에서<br>
+                <span style="color: var(--secondary-gold);">'전국자동차시세평가'</span>로 더 높게 도약합니다.
+            </h1>
+            <p class="hero-subtitle mt-4"
+                style="max-width: 800px; margin: 0 auto 40px auto; line-height: 1.7; word-break: keep-all;">
+                지난 수년간 한국자동차보상센터를 통해 쌓아온 방대한 데이터와 신뢰를 바탕으로 합니다.<br>
+                이제 차량 시세평가 영역의 독자적인 전문성을 확보하고, 고객님께 더욱 세밀하고 신속한 분석 서비스를 제공하기 위해
+                한국자동차보상센터의 시세평가부문이 <strong
+                    style="color: var(--secondary-gold); font-weight: 800;">'전국자동차시세평가'</strong>라는 이름으로 새롭게 시작합니다.
+            </p>
+            <a href="#contact" class="btn btn-light btn-lg rounded-0 px-5 fw-bold"
+                style="box-shadow: 0 4px 15px rgba(255,255,255,0.2);">무료 상담 신청</a>
+        </div>
+    </section>
+
+    <!-- Experts Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">자동차 전문 평가사 소개</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card expert-card h-100">
+                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light">
+                            <!-- Placeholder for Expert Image -->
+                            <span>Expert 1 Image</span>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">김대성 평가사</h5>
+                            <p class="text-muted mb-2">차량기술사 / 경력 15년</p>
+                            <p class="card-text small">수입차 격락손해 평가 및 사고 차량 가치 감정 전문.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card expert-card h-100">
+                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light">
+                            <span>Expert 2 Image</span>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">이태헌 평가사</h5>
+                            <p class="text-muted mb-2">차량기술사 / 경력 20년</p>
+                            <p class="card-text small">법인 차량 매각 시세 평가 및 자산 재평가 프로젝트 전담.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card expert-card h-100">
+                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light">
+                            <span>Expert 3 Image</span>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">이응찬 평가사</h5>
+                            <p class="text-muted mb-2">자동차 진단평가사 / 경력 10년</p>
+                            <p class="card-text small">캠핑카, 튜닝카, 특수 목적 차량의 복잡한 가치 산정 전문가.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Carousel -->
+    <section class="case-studies-section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">평가 사례</h2>
+            <div id="caseCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="a4-container">
+                            <div class="report-header">
+                                <small>CONFIDENTIAL</small>
+                            </div>
+                            <h3 class="report-title">격락손해<br>가치평가서</h3>
+                            <div class="mt-auto mb-5 text-start ps-3">
+                                <p><strong>차종:</strong> 벤츠 S580</p>
+                                <p><strong>평가액:</strong> ₩138,500,000</p>
+                                <p><strong>사유:</strong> 사고 후 시세 하락</p>
+                            </div>
+                            <div class="report-badge">평가완료</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="a4-container">
+                            <div class="report-header">
+                                <small>CONFIDENTIAL</small>
+                            </div>
+                            <h3 class="report-title">법인차량<br>일괄 매각 평가</h3>
+                            <div class="mt-auto mb-5 text-start ps-3">
+                                <p><strong>대상:</strong> (주)퓨처모빌리티</p>
+                                <p><strong>대수:</strong> 25대 (업무용)</p>
+                                <p><strong>목적:</strong> 자산 처분</p>
+                            </div>
+                            <div class="report-badge">평가완료</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="a4-container">
+                            <div class="report-header">
+                                <small>CONFIDENTIAL</small>
+                            </div>
+                            <h3 class="report-title">희귀 올드카<br>시세확인서</h3>
+                            <div class="mt-auto mb-5 text-start ps-3">
+                                <p><strong>차종:</strong> 1995 포르쉐 911</p>
+                                <p><strong>목적:</strong> 상속세 신고</p>
+                                <p><strong>등급:</strong> Collection A</p>
+                            </div>
+                            <div class="report-badge">평가완료</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#caseCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#caseCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="text-center mb-4">무료 상담 신청</h2>
+                    <p class="text-center mb-5 text-muted">성함과 연락처를 남겨주시면 신속하게 안내드리겠습니다.</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">신청자 성함 (또는 기관명)</label>
+                            <input type="text" class="form-control" id="name" name="name" required placeholder="홍길동">
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="form-label">연락처</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required
+                                placeholder="010-1234-5678">
+                        </div>
+                        <div class="d-grid">
+                            <!-- <small class="text-muted text-center mb-2">* 차량 정보는 상담 시 상세히 여쭤보겠습니다.</small> -->
+                            <button type="submit" class="btn btn-submit">무료 상담 신청하기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 전국자동차시세평가. All rights reserved.</p>
+            <small class="d-block mb-2">서울특별시 강남구 테헤란로 123 | 대표전화: 02-123-4567</small>
+            <a href="{% url 'login' %}" class="text-decoration-none text-secondary"
+                style="font-size: 0.8rem; opacity: 0.5;">Manager Login</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
