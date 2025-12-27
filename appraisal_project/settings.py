@@ -27,6 +27,12 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']  # For AWS deployment (Restrict this to IP/Domain later)
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://3.36.121.211',
+    'http://127.0.0.1',
+    'http://localhost',
+]
+
 
 # Application definition
 
