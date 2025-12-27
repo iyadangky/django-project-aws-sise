@@ -44,6 +44,31 @@ python manage.py migrate
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
+# 6. Service Configuration (Nginx & Gunicorn)
+echo "Configuring Nginx & Gunicorn..."
+
+# Install Nginx if not present
+if ! command -v nginx &> /dev/null; then
+    sudo apt-get install -y nginx
+fi
+
+# Copy Gunicorn service
+sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
+
+# Configure Nginx
+sudo cp nginx_app.conf /etc/nginx/sites-available/appraisal_project
+# Enable the site (remove default if exists)
+sudo ln -sf /etc/nginx/sites-available/appraisal_project /etc/nginx/sites-enabled/
+sudo rm -f /etc/nginx/sites-enabled/default
+
+# Check configuration and restart
+sudo nginx -t
+sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+
 echo "Deployment setup complete!"
-echo "To run the server for testing: python manage.py runserver 0.0.0.0:8000"
-echo "Note: Ensure AWS Security Group allows inbound traffic on port 8000."
+echo "Your site should be live at http://3.36.121.211"
+
