@@ -1,0 +1,324 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    --primary-blue: #005698;
+    --primary-dark: #00437a;
+    --secondary-bg: #f3f6fc;
+    --text-dark: #212121;
+    --text-gray: #666666;
+    --text-white: #ffffff;
+    --accent-red: #d93025;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Navbar */
+.navbar {
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    padding: 1rem 0;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.btn-consult-nav {
+    border: 1px solid #ddd;
+    color: var(--text-dark);
+    padding: 0.4rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.2s;
+}
+
+.btn-consult-nav:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+    background: transparent;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero_bg_professional.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 160px 0 120px;
+    position: relative;
+    text-align: left;
+    /* Changed to left align */
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    font-weight: 400;
+    max-width: 600px;
+}
+
+.btn-hero {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.btn-hero:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.btn-hero-outline {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-hero-outline:hover {
+    background-color: white;
+    color: var(--primary-blue);
+}
+
+/* Service Grid (Premium Redesign) */
+.service-section {
+    padding: 100px 0;
+    background-color: #f8f9fa;
+    /* Light subtle gray */
+}
+
+.service-section .section-title {
+    color: var(--text-dark);
+    margin-bottom: 4rem;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+
+
+:root {
+    /* ... existing vars ... */
+    --accent-gold: #c5a065;
+    --deep-navy: #1a2b4b;
+}
+
+.service-card {
+    background-color: white;
+    color: var(--text-dark);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    /* Sharper corners for professional look */
+    padding: 2.5rem 2rem;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    overflow: visible;
+    /* Allow effects to spill if needed, but usually hidden is safer. Let's keep specific overflow behavior controlled */
+}
+
+/* Gold top accent */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border-color: transparent;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+.service-card h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--deep-navy);
+    margin-bottom: 1.2rem;
+    border-bottom: none;
+    /* Remove old border */
+    padding-bottom: 0;
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.service-card .btn-arrow {
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    color: #ccc;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    align-self: flex-start;
+    /* Move to left or keep right? Design choice. Let's keep right but distinct. */
+    align-self: flex-end;
+}
+
+.service-card:hover .btn-arrow {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background-color: white;
+}
+
+/* Expert Cards (Legacy updated) */
+.expert-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.expert-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.expert-img {
+    height: 240px;
+    background-color: #f0f0f0;
+}
+
+/* Case Studies */
+.case-studies-section {
+    padding: 100px 0;
+}
+
+.a4-container {
+    width: 300px;
+    /* Fixed width for A4 ratio */
+    height: 424px;
+    background: white;
+    margin: 0 auto;
+    /* Center horizontally */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    position: relative;
+    text-align: left;
+    /* Keep internal text left-aligned */
+}
+
+/* Ensure centering wrapper */
+.carousel-item {
+    text-align: center;
+}
+
+/* Contact Form */
+.contact-section {
+    padding: 100px 0;
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 0.8rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 86, 152, 0.1);
+}
+
+.btn-submit {
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 4px;
+    padding: 1rem;
+    font-weight: 600;
+    border: none;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Kakao Button */
+.btn-kakao {
+    background-color: #FEE500;
+    color: #191919;
+    border: none;
+    border-radius: 4px;
+    padding: 1rem;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.btn-kakao:hover {
+    background-color: #e6cf00;
+    /* Slightly darker yellow for hover */
+    color: #191919;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    color: #666;
+    padding: 60px 0;
+    border-top: 1px solid #eee;
+}

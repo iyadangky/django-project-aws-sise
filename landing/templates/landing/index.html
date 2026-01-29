@@ -5,270 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전국자동차시세평가 - 내 차 가치 확인</title>
+    <title>전국자동차시세평가 - 데이터 기반의 확실한 가치 증명</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-navy: #1a2b4e;
-            --secondary-gold: #c5a47e;
-            --text-dark: #333;
-            --bg-light: #f8f9fa;
-        }
-
-        body {
-            font-family: 'Suit', sans-serif;
-            /* Fallback if not available */
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .navbar-brand {
-            font-family: 'Noto Serif KR', serif;
-            font-weight: 700;
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .navbar-brand {
-            color: var(--primary-navy);
-            font-size: 1.5rem;
-        }
-
-        .btn-consult {
-            background-color: var(--primary-navy);
-            color: white;
-            border-radius: 0;
-            padding: 0.5rem 1.5rem;
-        }
-
-        .btn-consult:hover {
-            background-color: #121e36;
-            color: white;
-        }
-
-        /* Hero */
-        .hero-section {
-            background: linear-gradient(135deg, #0f1c35 0%, #1a2b4e 100%);
-            color: white;
-            padding: 120px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(26, 43, 78, 0.8), rgba(0, 0, 0, 0.6));
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-family: 'Noto Serif KR', serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 25px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            letter-spacing: -1px;
-            line-height: 1.3;
-        }
-
-        .hero-subtitle {
-            font-family: 'Suit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            opacity: 0.95;
-            margin-bottom: 50px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Experts */
-        .expert-card {
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-
-        .expert-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .expert-img {
-            height: 250px;
-            background-color: #ddd;
-            object-fit: cover;
-        }
-
-        /* Carousel Case Studies (A4 Ratio) */
-        .case-studies-section {
-            background-color: white;
-            padding: 80px 0;
-        }
-
-        .carousel-item {
-            padding: 20px;
-        }
-
-        .a4-container {
-            width: 300px;
-            height: 424px;
-            /* 1:1.414 ratio roughly */
-            background: white;
-            border: 1px solid #eee;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            position: relative;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .report-header {
-            border-bottom: 2px solid var(--primary-navy);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-
-        .report-title {
-            font-size: 1.5rem;
-            color: var(--primary-navy);
-            margin-bottom: 10px;
-        }
-
-        .report-badge {
-            width: 80px;
-            height: 80px;
-            border: 3px solid #c00;
-            border-radius: 50%;
-            color: #c00;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transform: rotate(-15deg);
-            position: absolute;
-            bottom: 50px;
-            right: 40px;
-            opacity: 0.8;
-            border-style: double;
-        }
-
-        /* Contact Form */
-        .contact-section {
-            background-color: var(--bg-light);
-            padding: 80px 0;
-        }
-
-        .form-control {
-            border-radius: 0;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-        }
-
-        .btn-submit {
-            background-color: var(--primary-navy);
-            color: white;
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.1rem;
-            border-radius: 0;
-        }
-
-        .btn-submit:hover {
-            background-color: #121e36;
-            color: white;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #111;
-            color: #888;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .navbar-brand img {
-                height: 30px !important;
-            }
-
-            .navbar-brand span {
-                font-size: 0.9rem !important;
-            }
-
-            .navbar-brand.me-3 {
-                margin-right: 0.5rem !important;
-            }
-
-            .navbar-brand {
-                font-size: 1rem !important;
-            }
-
-            .hero-section {
-                padding: 80px 0;
-            }
-
-            .hero-content {
-                padding: 0 20px;
-            }
-
-            .hero-title {
-                font-size: 2rem !important;
-                /* Reduced from 3.5rem */
-                margin-bottom: 20px;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem !important;
-                margin-bottom: 30px;
-                padding: 0 10px;
-            }
-
-            .btn-lg {
-                width: 100%;
-                font-size: 1rem;
-            }
-
-            /* Navbar adjustments */
-            .navbar .container>div.d-flex {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .navbar .container>div.d-flex>div[style*="height: 30px"] {
-                display: none;
-                /* Hide separator on mobile */
-            }
-
-            .navbar-brand {
-                margin-bottom: 5px;
-            }
-        }
-    </style>
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Suit:wght@400;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'landing/css/style.css' %}?v=3" rel="stylesheet">
+    <!-- Google Fonts (Fallbacks) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -282,141 +25,353 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <div class="d-flex align-items-center">
-                <a class="navbar-brand d-flex align-items-center me-3" href="#">
-                    <img src="{% static 'landing/images/logo_full.png' %}" alt="전국자동차시세평가" height="50">
-                </a>
-                <div style="height: 30px; width: 1px; background-color: #ddd; margin-right: 15px;"></div>
-                <a class="navbar-brand d-flex align-items-center" href="http://www.kvcc.co.kr" target="_blank">
-                    <img src="{% static 'landing/images/kvcc_logo.jpg' %}" alt="KVCC Logo" height="40" class="me-2">
-                    <span style="font-size: 1.1rem; color: #555;">한국자동차보상센터</span>
-                </a>
-            </div>
+            <a class="navbar-brand d-flex align-items-center me-4" href="#">
+                <img src="{% static 'landing/images/logo_full.png' %}" alt="전국자동차시세평가">
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="btn btn-consult" href="#contact">무료 상담 신청하기</a>
-                    </li>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#services">평가영역</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cases">평가사례</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">상담신청</a></li>
                 </ul>
+                <div class="d-flex align-items-center">
+                    <span class="me-3 small text-muted d-none d-lg-block">한국자동차보상센터 제휴기관</span>
+                    <a href="http://www.kvcc.co.kr" target="_blank" class="btn btn-consult-nav">
+                        KVCC 바로가기 ↗
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container hero-content">
-            <h1 class="hero-title" style="word-break: keep-all;">
-                보상을 넘어 <span style="color: var(--secondary-gold);">가치의 증명</span>으로.<br>
-                한국자동차보상센터에서<br>
-                <span style="color: var(--secondary-gold);">'전국자동차시세평가'</span>로 더 높게 도약합니다.
-            </h1>
-            <p class="hero-subtitle mt-4"
-                style="max-width: 800px; margin: 0 auto 40px auto; line-height: 1.7; word-break: keep-all;">
-                지난 수년간 한국자동차보상센터를 통해 쌓아온 방대한 데이터와 신뢰를 바탕으로 합니다.<br>
-                이제 차량 시세평가 영역의 독자적인 전문성을 확보하고, 고객님께 더욱 세밀하고 신속한 분석 서비스를 제공하기 위해
-                한국자동차보상센터의 시세평가부문이 <strong
-                    style="color: var(--secondary-gold); font-weight: 800;">'전국자동차시세평가'</strong>라는 이름으로 새롭게 시작합니다.
-            </p>
-            <a href="#contact" class="btn btn-light btn-lg rounded-0 px-5 fw-bold"
-                style="box-shadow: 0 4px 15px rgba(255,255,255,0.2);">무료 상담 신청</a>
-        </div>
-    </section>
-
-    <!-- Experts Section -->
-    <section class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5 section-title">자동차 전문 평가사 소개</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card expert-card h-100">
-                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light">
-                            <!-- Placeholder for Expert Image -->
-                            <span>Expert 1 Image</span>
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">김대성 평가사</h5>
-                            <p class="text-muted mb-2">차량기술사 / 경력 15년</p>
-                            <p class="card-text small">수입차 격락손해 평가 및 사고 차량 가치 감정 전문.</p>
-                        </div>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="hero-title">
+                        데이터로 증명하는<br>
+                        자동차의 <span style="color: #6ea8fe;">진정한 가치</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        법원 감정인, 기술사, 기능장급 전문가들의 분석으로<br>
+                        고객님의 소중한 자산 가치를 정확하게 평가해드립니다.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#contact" class="btn btn-hero mb-2">무료 상담 신청</a>
+                        <a href="#services" class="btn btn-hero-outline mb-2">서비스 알아보기</a>
+                        <a href="https://open.kakao.com/o/sExample" target="_blank" class="btn btn-kakao mb-2">
+                            카카오톡 채팅문의
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card expert-card h-100">
-                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light">
-                            <span>Expert 2 Image</span>
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">이태헌 평가사</h5>
-                            <p class="text-muted mb-2">차량기술사 / 경력 20년</p>
-                            <p class="card-text small">법인 차량 매각 시세 평가 및 자산 재평가 프로젝트 전담.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card expert-card h-100">
-                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light">
-                            <span>Expert 3 Image</span>
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title">이응찬 평가사</h5>
-                            <p class="text-muted mb-2">자동차 진단평가사 / 경력 10년</p>
-                            <p class="card-text small">캠핑카, 튜닝카, 특수 목적 차량의 복잡한 가치 산정 전문가.</p>
-                        </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="p-4"
+                        style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-left: 3px solid #6ea8fe;">
+                        <h4 class="fw-bold mb-3" style="font-family: 'Noto Serif KR', serif;">보상을 넘어 가치의 증명으로.</h4>
+                        <p class="text-white opacity-75 small mb-4">
+                            한국자동차보상센터에서<br>
+                            '전국자동차시세평가'로 더 높게 도약합니다.
+                        </p>
+                        <hr class="border-light opacity-25 my-4">
+                        <p class="text-white opacity-75 small lh-lg mb-0"
+                            style="text-align: left; word-break: keep-all;">
+                            지난 수년간 한국자동차보상센터를 통해 쌓아온 방대한 데이터와 신뢰를 바탕으로 합니다.
+                            이제 차량 시세평가 영역의 독자적인 전문성을 확보하고, 고객님께 더욱 세밀하고 신속한 분석 서비스를 제공하기 위해 한국자동차보상센터의 시세평가부문이
+                            '전국자동차시세평가'라는 이름으로 새롭게 시작합니다.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Case Studies Carousel -->
-    <section class="case-studies-section bg-light">
+    <!-- Services Section (New Grid) -->
+    <section id="services" class="service-section">
         <div class="container">
-            <h2 class="text-center mb-5 section-title">평가 사례</h2>
-            <div id="caseCarousel" class="carousel slide" data-bs-ride="carousel">
+            <h2 class="section-title">평가 영역</h2>
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-4 col-lg">
+                    <a href="#detail-damage" class="text-decoration-none h-100 d-block">
+                        <div class="service-card">
+                            <div>
+                                <h3>격락손해</h3>
+                                <p>사고 수리 후 하락한<br>차량 시세 평가</p>
+                            </div>
+                            <div class="btn-arrow">➜</div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-4 col-lg">
+                    <a href="#detail-corporate" class="text-decoration-none h-100 d-block">
+                        <div class="service-card">
+                            <div>
+                                <h3>법인 매각</h3>
+                                <p>업무용 차량의<br>적정 매각가 산정</p>
+                            </div>
+                            <div class="btn-arrow">➜</div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4 col-lg">
+                    <a href="#detail-finance" class="text-decoration-none h-100 d-block">
+                        <div class="service-card">
+                            <div>
+                                <h3>자산 재평가</h3>
+                                <p>기업 보유 차량의<br>현재 가치 평가</p>
+                            </div>
+                            <div class="btn-arrow">➜</div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-4 col-lg">
+                    <a href="#detail-special" class="text-decoration-none h-100 d-block">
+                        <div class="service-card">
+                            <div>
+                                <h3>특수 차량</h3>
+                                <p>캠핑카, 튜닝카 등<br>특수 목적 차량</p>
+                            </div>
+                            <div class="btn-arrow">➜</div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-md-4 col-lg">
+                    <a href="#detail-inheritance" class="text-decoration-none h-100 d-block">
+                        <div class="service-card">
+                            <div>
+                                <h3>상속/증여</h3>
+                                <p>세금 신고를 위한<br>공적 시세 증명</p>
+                            </div>
+                            <div class="btn-arrow">➜</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experts Section (Dual Carousels) -->
+    <section id="experts" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title mb-5">자동차 전문 평가사</h2>
+
+            <!-- Expert 1: Lee Tae-heon -->
+            <div class="mb-5">
+                <h3 class="fw-bold mb-4 ps-2 border-start border-4 border-primary">이태헌 평가사</h3>
+                <div id="expertCarousel1" class="carousel slide">
+                    <div class="carousel-inner">
+                        <!-- Slide 1: Profile + License 1 -->
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center flex-wrap gap-3">
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light"
+                                            style="height: 300px; font-size: 3rem;">
+                                            👨‍⚖️
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">이태헌 평가사</h4>
+                                            <span class="badge bg-secondary mb-3">대표 평가사</span>
+                                            <p class="card-text">법원 감정인 / 시세 평가 총괄</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-white bg-primary"
+                                            style="height: 300px; font-size: 3rem;">
+                                            📜
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">차량기술사</h4>
+                                            <span class="badge bg-light text-dark mb-3 border">자격증</span>
+                                            <p class="card-text">국가기술자격 최고 등급</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2: License 2 + License 3 -->
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center flex-wrap gap-3">
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-white bg-success"
+                                            style="height: 300px; font-size: 3rem;">
+                                            🔍
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">진단평가사</h4>
+                                            <span class="badge bg-light text-dark mb-3 border">자격증</span>
+                                            <p class="card-text">공인 자동차 진단 평가 자격</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-white bg-info"
+                                            style="height: 300px; font-size: 3rem;">
+
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">자동차정비기능장</h4>
+                                            <span class="badge bg-light text-dark mb-3 border">자격증</span>
+                                            <p class="card-text">최상급 정비 숙련 기술 보유</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#expertCarousel1"
+                        data-bs-slide="prev" style="width: 5%;">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#expertCarousel1"
+                        data-bs-slide="next" style="width: 5%;">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Expert 2: Lee Eung-chan -->
+            <div>
+                <h3 class="fw-bold mb-4 ps-2 border-start border-4 border-warning">이응찬 평가사</h3>
+                <div id="expertCarousel2" class="carousel slide">
+                    <div class="carousel-inner">
+                        <!-- Slide 1: Profile + License 1 -->
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center flex-wrap gap-3">
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-muted bg-light"
+                                            style="height: 300px; font-size: 3rem;">
+                                            👨‍🔧
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">이응찬 평가사</h4>
+                                            <span class="badge bg-primary mb-3">수석 평가사</span>
+                                            <p class="card-text">특수 차량 가치 산정 전문</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-white bg-success"
+                                            style="height: 300px; font-size: 3rem;">
+                                            �
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">진단평가사</h4>
+                                            <span class="badge bg-light text-dark mb-3 border">자격증</span>
+                                            <p class="card-text">공인 자동차 진단 평가 자격</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2: License 2 + Empty -->
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center flex-wrap gap-3">
+                                <div style="width: 400px; max-width: 100%;">
+                                    <div class="card expert-card mx-auto h-100">
+                                        <div class="expert-img d-flex align-items-center justify-content-center text-white bg-secondary"
+                                            style="height: 300px; font-size: 3rem;">
+                                            🛠️
+                                        </div>
+                                        <div class="card-body text-center p-4">
+                                            <h4 class="card-title fw-bold mb-1">자동차정비산업기사</h4>
+                                            <span class="badge bg-light text-dark mb-3 border">자격증</span>
+                                            <p class="card-text">국가기술자격 정비 전문</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width: 400px; max-width: 100%;">
+                                    <!-- Empty Placeholder to keep layout consistent -->
+                                    <div class="h-100" style="max-width: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#expertCarousel2"
+                        data-bs-slide="prev" style="width: 5%;">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#expertCarousel2"
+                        data-bs-slide="next" style="width: 5%;">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Carousel -->
+    <section id="cases" class="case-studies-section bg-white">
+        <div class="container">
+            <h2 class="section-title">주요 평가 사례</h2>
+            <div id="caseCarousel" class="carousel slide">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="a4-container">
-                            <div class="report-header">
-                                <small>CONFIDENTIAL</small>
+                        <div class="d-flex justify-content-center w-100">
+                            <div class="a4-container">
+                                <div class="report-header">
+                                    <small style="color: #999;">OFFICIAL REPORT</small>
+                                </div>
+                                <h3 class="report-title">격락손해<br>가치평가서</h3>
+                                <div class="mt-auto mb-5 text-start ps-3">
+                                    <p><strong>차종:</strong> 벤츠 S580</p>
+                                    <p><strong>평가액:</strong> ₩138,500,000</p>
+                                    <p><strong>결과:</strong> 보험사 지급액 대비 +850만원 인정</p>
+                                </div>
+                                <div class="report-badge">평가완료</div>
                             </div>
-                            <h3 class="report-title">격락손해<br>가치평가서</h3>
-                            <div class="mt-auto mb-5 text-start ps-3">
-                                <p><strong>차종:</strong> 벤츠 S580</p>
-                                <p><strong>평가액:</strong> ₩138,500,000</p>
-                                <p><strong>사유:</strong> 사고 후 시세 하락</p>
-                            </div>
-                            <div class="report-badge">평가완료</div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="a4-container">
-                            <div class="report-header">
-                                <small>CONFIDENTIAL</small>
+                        <div class="d-flex justify-content-center w-100">
+                            <div class="a4-container">
+                                <div class="report-header">
+                                    <small style="color: #999;">OFFICIAL REPORT</small>
+                                </div>
+                                <h3 class="report-title">법인차량<br>일괄 매각 평가</h3>
+                                <div class="mt-auto mb-5 text-start ps-3">
+                                    <p><strong>대상:</strong> (주)퓨처모빌리티</p>
+                                    <p><strong>대수:</strong> 25대 (업무용)</p>
+                                    <p><strong>결과:</strong> 자산 매각 최적가 산정 완료</p>
+                                </div>
+                                <div class="report-badge">평가완료</div>
                             </div>
-                            <h3 class="report-title">법인차량<br>일괄 매각 평가</h3>
-                            <div class="mt-auto mb-5 text-start ps-3">
-                                <p><strong>대상:</strong> (주)퓨처모빌리티</p>
-                                <p><strong>대수:</strong> 25대 (업무용)</p>
-                                <p><strong>목적:</strong> 자산 처분</p>
-                            </div>
-                            <div class="report-badge">평가완료</div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="a4-container">
-                            <div class="report-header">
-                                <small>CONFIDENTIAL</small>
+                        <div class="d-flex justify-content-center w-100">
+                            <div class="a4-container">
+                                <div class="report-header">
+                                    <small style="color: #999;">OFFICIAL REPORT</small>
+                                </div>
+                                <h3 class="report-title">희귀 올드카<br>시세확인서</h3>
+                                <div class="mt-auto mb-5 text-start ps-3">
+                                    <p><strong>차종:</strong> 1995 포르쉐 911</p>
+                                    <p><strong>목적:</strong> 상속세 신고</p>
+                                    <p><strong>결과:</strong> 국세청 인정 감정가액 산출</p>
+                                </div>
+                                <div class="report-badge">평가완료</div>
                             </div>
-                            <h3 class="report-title">희귀 올드카<br>시세확인서</h3>
-                            <div class="mt-auto mb-5 text-start ps-3">
-                                <p><strong>차종:</strong> 1995 포르쉐 911</p>
-                                <p><strong>목적:</strong> 상속세 신고</p>
-                                <p><strong>등급:</strong> Collection A</p>
-                            </div>
-                            <div class="report-badge">평가완료</div>
                         </div>
                     </div>
                 </div>
@@ -433,26 +388,28 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section bg-light">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h2 class="text-center mb-4">무료 상담 신청</h2>
-                    <p class="text-center mb-5 text-muted">성함과 연락처를 남겨주시면 신속하게 안내드리겠습니다.</p>
-                    <form method="POST">
+                    <p class="text-center mb-5 text-muted">문의주시면 전문 평가사가 직접 연락드립니다.</p>
+                    <form method="POST" class="p-4 border rounded shadow-sm bg-white">
                         {% csrf_token %}
                         <div class="mb-3">
-                            <label for="name" class="form-label">신청자 성함 (또는 기관명)</label>
+                            <label for="name" class="form-label small fw-bold">신청자 성함 (또는 기관명)</label>
                             <input type="text" class="form-control" id="name" name="name" required placeholder="홍길동">
                         </div>
                         <div class="mb-4">
-                            <label for="phone" class="form-label">연락처</label>
+                            <label for="phone" class="form-label small fw-bold">연락처</label>
                             <input type="tel" class="form-control" id="phone" name="phone" required
                                 placeholder="010-1234-5678">
                         </div>
-                        <div class="d-grid">
-                            <!-- <small class="text-muted text-center mb-2">* 차량 정보는 상담 시 상세히 여쭤보겠습니다.</small> -->
-                            <button type="submit" class="btn btn-submit">무료 상담 신청하기</button>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-submit">상담 신청하기</button>
+                            <a href="https://open.kakao.com/o/sExample" target="_blank" class="btn btn-kakao">
+                                카카오톡 채팅문의
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -460,13 +417,144 @@
         </div>
     </section>
 
+    <!-- Detailed Services Description Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="section-title mb-5">업무영역 상세</h2>
+
+            <div class="d-flex flex-column gap-5">
+                <!-- 1. 격락손해 -->
+                <div id="detail-damage" class="row align-items-center g-5">
+                    <div class="col-md-5">
+                        <img src="{% static 'landing/images/service_damage.png' %}" alt="격락손해 평가"
+                            class="img-fluid rounded shadow-sm">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold fs-4 mb-3" style="color: var(--primary-navy);">1. 격락손해 (시세하락손해)</h3>
+                        <p class="text-secondary lh-lg mb-0" style="text-align: justify;">
+                            교통사고로 인해 차량의 골격 부위에 손상이 발생하면, 완벽하게 수리를 하더라도 차량의 중고차 시장 가치는 하락하게 됩니다. 이를 '격락손해' 또는 '시세하락손해'라고
+                            합니다.
+                            보험사는 약관에 따라 제한적인 범위 내에서만 보상하지만, 실제 시장에서 발생하는 감가상각액은 그보다 훨씬 큰 경우가 많습니다.
+                            전국자동차시세평가는 법원 감정인 자격을 갖춘 전문가들이 파손 부위와 수리 내역을 정밀 분석하여, 실제 하락한 차량의 가치를 객관적인 데이터로 산출합니다.
+                            이를 통해 보험사와의 합의나 소송 과정에서 정당한 권리를 찾을 수 있도록 강력한 근거 자료를 제공해 드립니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 법인매각 -->
+                <div id="detail-corporate" class="row align-items-center g-5 flex-md-row-reverse">
+                    <div class="col-md-5">
+                        <img src="{% static 'landing/images/service_corporate.png' %}" alt="법인 차량 매각"
+                            class="img-fluid rounded shadow-sm">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold fs-4 mb-3" style="color: var(--primary-navy);">2. 법인 차량 매각</h3>
+                        <p class="text-secondary lh-lg mb-0" style="text-align: justify;">
+                            법인이 보유한 업무용 차량을 매각하거나 임직원에게 승계할 때, 가장 중요한 것은 ‘적정 시세’를 산정하는 것입니다.
+                            특수관계인 간의 거래나 일반 매각 시, 객관적인 시세 증빙 없이 거래를 진행하면 추후 세무 조사 등에서 부당행위계산부인 등의 리스크가 발생할 수 있습니다.
+                            저희는 방대한 실거래 데이터를 바탕으로 해당 시점의 가장 정확한 차량 시세를 평가하여 공인된 시세 평가서를 발급해 드립니다.
+                            다수의 차량을 일괄 매각하는 경우에도 각 차량의 상태를 개별적으로 진단하여 최적의 매각 가이드라인을 제시함으로써, 기업의 자산 처분 투명성을 확보하고 재무적 손실을
+                            방지합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. 자산재평가 -->
+                <div id="detail-finance" class="row align-items-center g-5">
+                    <div class="col-md-5">
+                        <img src="{% static 'landing/images/service_finance.png' %}" alt="자산 재평가"
+                            class="img-fluid rounded shadow-sm">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold fs-4 mb-3" style="color: var(--primary-navy);">3. 자산 재평가</h3>
+                        <p class="text-secondary lh-lg mb-0" style="text-align: justify;">
+                            기업의 재무건전성을 확보하거나 회계 결산을 진행할 때, 보유 중인 차량 자산의 현재 가치를 정확히 파악하는 것은 필수적입니다.
+                            오래된 장부가는 현재의 시장 가치를 반영하지 못하는 경우가 많으며, 이는 기업 가치 평가에 왜곡을 가져올 수 있습니다.
+                            전국자동차시세평가는 IFRS(국제회계기준) 및 국내 회계 기준에 부합하는 공정한 자산 재평가 서비스를 제공합니다.
+                            차량의 노후도, 관리 상태, 시장 트렌드 등을 종합적으로 고려하여 자산의 실질 가치를 평가함으로써, 기업의 대차대조표를 현실화하고 신용 등급 관리 및 투자 유치 등에
+                            긍정적인 영향을 줄 수 있도록 돕습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. 특수차량 -->
+                <div id="detail-special" class="row align-items-center g-5 flex-md-row-reverse">
+                    <div class="col-md-5">
+                        <img src="{% static 'landing/images/service_special.png' %}" alt="특수 차량 평가"
+                            class="img-fluid rounded shadow-sm">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold fs-4 mb-3" style="color: var(--primary-navy);">4. 특수 차량 평가</h3>
+                        <p class="text-secondary lh-lg mb-0" style="text-align: justify;">
+                            캠핑카, 푸드트럭, 앰뷸런스, 방송 중계차 등 특수 목적을 위해 개조된 차량은 일반적인 중고차 시세표로는 그 가치를 판단하기 어렵습니다.
+                            개조에 들어간 비용, 장비의 잔존 가치, 그리고 특수 차량 시장의 수요와 공급을 면밀히 분석해야만 정확한 평가가 가능합니다.
+                            저희는 다양한 특수 차량에 대한 풍부한 데이터베이스와 전문 지식을 보유하고 있어, 복잡한 튜닝 내역과 장비의 감가상각을 정교하게 계산해 냅니다.
+                            이를 통해 매매 당사자 간의 이견을 좁히고, 금융권 대출이나 보험 가입 시 필요한 신뢰할 수 있는 가치 평가 기준을 마련해 드립니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. 상속/증여 -->
+                <div id="detail-inheritance" class="row align-items-center g-5">
+                    <div class="col-md-5">
+                        <img src="{% static 'landing/images/service_inheritance.png' %}" alt="상속 및 증여"
+                            class="img-fluid rounded shadow-sm">
+                    </div>
+                    <div class="col-md-7">
+                        <h3 class="fw-bold fs-4 mb-3" style="color: var(--primary-navy);">5. 상속 및 증여</h3>
+                        <p class="text-secondary lh-lg mb-0" style="text-align: justify;">
+                            자동차를 가족에게 상속하거나 증여할 때, 취등록세 및 상속세/증여세 신고를 위해서는 해당 차량의 정확한 가액 산정이 필요합니다.
+                            특히 고가의 수입차나 올드카, 단종된 차량의 경우, 국세청 홈택스 조회 가액과 실제 시세 간에 차이가 발생할 수 있어 세금 신고 시 혼란을 겪을 수 있습니다.
+                            전국자동차시세평가에서 발급하는 시세 확인서는 국세청 등 관공서 제출용으로 활용 가능한 공신력을 갖추고 있습니다.
+                            시가 표준액이 아닌 실제 거래 가능한 시세를 바탕으로 합리적인 세금을 납부하고, 세무적인 불이익을 당하지 않도록 전문적인 시세 증빙 서비스를 제공합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="section-title mb-5">About Us</h2>
+            <div class="mx-auto" style="max-width: 800px;">
+                <h3 class="fw-bold mb-4" style="color: var(--primary-blue);">안녕하세요. 전국자동차시세평가입니다.</h3>
+                <p class="text-secondary lh-lg mb-4">
+                    한국자동차 보상센터는 10년이 넘는 기간동안<br>
+                    자동차 사고 피해자 여러분의 피해회복을 위해<br>
+                    노력해왔습니다.
+                </p>
+                <p class="text-secondary lh-lg mb-4">
+                    이전에는 자동차 사고 피해보상 프로세스의 일부였던<br>
+                    차량 시세평가 영역의 독자적인 전문성을 확보하고,<br>
+                    고객님께 더욱 세밀하고 신속한 분석 서비스를 제공하기 위해<br>
+                    한국자동차보상센터의 시세평가부문이<br>
+                    <strong>'전국자동차시세평가'</strong>라는 이름으로 새롭게 시작합니다.
+                </p>
+                <p class="fs-5 fw-bold mb-4">
+                    보상을 넘어 가치의 증명으로.<br>
+                    한국자동차보상센터에서<br>
+                    <span class="text-primary">'전국자동차시세평가'</span>로 더 높게 도약합니다.
+                </p>
+                <p class="fs-5 fw-bold text-dark">
+                    저희는 고객 여러분의 입장에서 진심을 다하겠습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2024 전국자동차시세평가. All rights reserved.</p>
-            <small class="d-block mb-2">서울특별시 강남구 테헤란로 123 | 대표전화: 02-123-4567</small>
-            <a href="{% url 'login' %}" class="text-decoration-none text-secondary"
-                style="font-size: 0.8rem; opacity: 0.5;">Manager Login</a>
+        <div class="container text-center">
+            <div class="mb-3">
+                <span class="fw-bold">전국자동차시세평가</span>
+            </div>
+            <p class="small text-muted mb-4">
+                서울특별시 서초구 서초대로 123 | 대표전화: 02-123-4567 | 이메일: contact@sise.com<br>
+                Copyright &copy; 2026 Sise Valuation. All rights reserved.
+            </p>
+            <a href="{% url 'login' %}" class="text-secondary small text-decoration-none opacity-50">Admin Login</a>
         </div>
     </footer>
 
