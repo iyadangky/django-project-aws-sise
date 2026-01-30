@@ -256,18 +256,124 @@ h6,
 
 .a4-container {
     width: 300px;
-    /* Fixed width for A4 ratio */
     height: 424px;
     background: white;
     margin: 0 auto;
-    /* Center horizontally */
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding: 30px;
     position: relative;
     text-align: left;
-    /* Keep internal text left-aligned */
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+/* Formal document frame */
+.a4-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid #d1b894;
+    /* Gold-tinted border */
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Subtle watermark */
+.a4-container::after {
+    content: 'SISE VALUATION';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.02);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.report-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.report-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a2b4b;
+    margin-bottom: 30px;
+    z-index: 2;
+    position: relative;
+}
+
+.report-content {
+    font-size: 0.85rem;
+    color: #444;
+    z-index: 2;
+    position: relative;
+}
+
+.report-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.report-label {
+    font-weight: 700;
+    color: #666;
+}
+
+.report-footer {
+    margin-top: auto;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 2;
+    position: relative;
+}
+
+.report-signature {
+    text-align: center;
+}
+
+.signature-line {
+    width: 100px;
+    border-bottom: 1px solid #999;
+    margin-bottom: 5px;
+}
+
+.report-badge {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #d93025;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d93025;
+    font-weight: 800;
+    font-size: 0.7rem;
+    transform: rotate(15deg);
+    background: rgba(217, 48, 37, 0.05);
+    z-index: 3;
+    /* Stamp effect */
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #d93025;
 }
 
 /* Ensure centering wrapper */
