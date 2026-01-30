@@ -15,4 +15,5 @@ staticfiles
 
 # Environment
 venv314/
+venv/
 .env

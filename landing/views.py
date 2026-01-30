@@ -9,7 +9,10 @@ def index(request):
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         if name and phone:
-            ConsultationRequest.objects.create(name=name, phone=phone)
+            ConsultationRequest.objects.create(
+                name=name, 
+                phone=phone
+            )
             return render(request, 'landing/index.html', {'success': True})
     return render(request, 'landing/index.html')
 
